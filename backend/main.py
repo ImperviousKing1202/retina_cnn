@@ -108,30 +108,45 @@ def health_check():
 @app.post("/predict")
 async def predict(file: UploadFile = File(...)):
     try:
+        # Read and preprocess image
         image_bytes = await file.read()
         image = Image.open(io.BytesIO(image_bytes)).convert("RGB")
         img_tensor = transform(image).unsqueeze(0).to(device)
 
+        # Run inference
         with torch.no_grad():
             outputs = model(img_tensor)
             probs = F.softmax(outputs, dim=1)[0]
 
+        # Get top prediction
         top_idx = probs.argmax().item()
         confidence = float(probs[top_idx])
         label = CLASS_NAMES[top_idx]
 
+        # Top 3 predictions
         top_probs, top_idxs = torch.topk(probs, k=min(3, len(CLASS_NAMES)))
         top_predictions = [
             {"class": CLASS_NAMES[i], "confidence": float(top_probs[j])}
             for j, i in enumerate(top_idxs)
         ]
 
+        # ⚠️ Confidence threshold logic
+        confidence_threshold = 0.65
+        if confidence < confidence_threshold:
+            label = "uncertain"
+            message = "Image does not appear to contain a recognizable retina pattern."
+        else:
+            message = f"Detected {label} with {round(confidence * 100, 2)}% confidence."
+
+        # ✅ Return clean JSON
         return JSONResponse({
             "filename": file.filename,
             "prediction": label,
             "confidence": round(confidence, 4),
             "top_predictions": top_predictions,
+            "message": message,
             "timestamp": datetime.now().isoformat(),
         })
+
     except Exception as e:
         return JSONResponse({"error": str(e)}, status_code=500)
