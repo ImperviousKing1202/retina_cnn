@@ -206,3 +206,4 @@ Enterprise License — see LICENSE file for details.
 RETINA: Real-Time Eye-Disease Testing with Intelligent Neural Analysis
 Empowering early detection, efficient diagnosis, and intelligent care through CNN-based precision.# RETINA_APP
 # retina_cnn
+# retina_cnn
