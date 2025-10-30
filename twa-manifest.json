@@ -1,0 +1,64 @@
+{
+  "packageId": "dev.ngrok_free.micronemous_inge_ornithologically.twa",
+  "host": "micronemous-inge-ornithologically.ngrok-free.dev",
+  "name": "RETINA: Real-Time Eye-Disease Testing",
+  "launcherName": "RETINA",
+  "display": "standalone",
+  "themeColor": "#10B981",
+  "themeColorDark": "#000000",
+  "navigationColor": "#000000",
+  "navigationColorDark": "#000000",
+  "navigationDividerColor": "#000000",
+  "navigationDividerColorDark": "#000000",
+  "backgroundColor": "#FFFFFF",
+  "enableNotifications": true,
+  "startUrl": "/",
+  "iconUrl": "https://micronemous-inge-ornithologically.ngrok-free.dev/retina-logo.png",
+  "maskableIconUrl": "https://micronemous-inge-ornithologically.ngrok-free.dev/retina-logo.png",
+  "splashScreenFadeOutDuration": 300,
+  "signingKey": {
+    "path": "/Users/gsadmin/FINAL_RETINA/android.keystore",
+    "alias": "android"
+  },
+  "appVersionName": "1",
+  "appVersionCode": 1,
+  "shortcuts": [
+    {
+      "name": "Start CNN Analysis",
+      "shortName": "Analyze",
+      "url": "https://micronemous-inge-ornithologically.ngrok-free.dev/cnn-detection",
+      "chosenIconUrl": "https://micronemous-inge-ornithologically.ngrok-free.dev/retina-logo.png"
+    },
+    {
+      "name": "Training Mode",
+      "shortName": "Train",
+      "url": "https://micronemous-inge-ornithologically.ngrok-free.dev/cnn-training",
+      "chosenIconUrl": "https://micronemous-inge-ornithologically.ngrok-free.dev/retina-logo.png"
+    }
+  ],
+  "generatorApp": "bubblewrap-cli",
+  "webManifestUrl": "https://micronemous-inge-ornithologically.ngrok-free.dev/manifest.json",
+  "fallbackType": "customtabs",
+  "features": {},
+  "alphaDependencies": {
+    "enabled": false
+  },
+  "enableSiteSettingsShortcut": true,
+  "isChromeOSOnly": false,
+  "isMetaQuest": false,
+  "fullScopeUrl": "https://micronemous-inge-ornithologically.ngrok-free.dev/",
+  "minSdkVersion": 21,
+  "orientation": "portrait",
+  "fingerprints": [],
+  "additionalTrustedOrigins": [],
+  "retainedBundles": [],
+  "protocolHandlers": [],
+  "fileHandlers": [],
+  "launchHandlerClientMode": "focus-existing",
+  "displayOverride": [
+    "fullscreen",
+    "standalone",
+    "minimal-ui"
+  ],
+  "appVersion": "1"
+}

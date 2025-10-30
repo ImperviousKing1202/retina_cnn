@@ -1,0 +1,14 @@
+# Core API framework
+fastapi>=0.115.0
+uvicorn[standard]>=0.30.0
+
+# Deep learning
+torch>=2.1.0
+torchvision>=0.16.0
+
+# Image processing
+Pillow>=10.0.0
+
+# Data & utilities (optional but helpful)
+numpy>=1.26.0
+python-multipart>=0.0.9
