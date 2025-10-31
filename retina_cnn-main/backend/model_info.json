@@ -1,0 +1,12 @@
+{
+  "model_name": "model.pth",
+  "num_classes": 4,
+  "classes": [
+    "Cataract",
+    "Glaucoma",
+    "Normal",
+    "Diabetic Retinopathy"
+  ],
+  "device": "cpu",
+  "timestamp": "2025-10-30T11:25:02.853543"
+}

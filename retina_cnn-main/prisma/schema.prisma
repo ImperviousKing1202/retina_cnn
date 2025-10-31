@@ -1,0 +1,57 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model DetectionResult {
+  id          String   @id @default(cuid())
+  diseaseType String   // glaucoma, retinopathy, cataract
+  imageUrl    String
+  confidence  Float    // 0-1 confidence score
+  result      String   // positive, negative, inconclusive
+  details     String?  // JSON string with detailed analysis
+  userId      String?
+  imageId     String?  // ID from image storage system
+  createdAt   DateTime @default(now())
+  
+  @@map("detection_results")
+}
+
+model TrainingImage {
+  id            String   @id @default(cuid())
+  diseaseType   String   // glaucoma, retinopathy, cataract
+  imageUrl      String
+  label         String   // positive, negative
+  isVerified    Boolean  @default(false)
+  uploadedBy    String?
+  imageId       String?  // ID from image storage system
+  originalName  String?  // Original filename
+  fileSize      Int?     // File size in bytes
+  mimeType      String?  // MIME type
+  createdAt     DateTime @default(now())
+  
+  @@map("training_images")
+}
+
+model DetectionSession {
+  id          String   @id @default(cuid())
+  userId      String?
+  diseaseType String
+  status      String   // started, captured, analyzing, completed, failed
+  imageUrl    String?
+  resultId    String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  @@map("detection_sessions")
+}
